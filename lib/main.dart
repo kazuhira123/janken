@@ -7,13 +7,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -32,6 +30,29 @@ class JankenPage extends StatefulWidget {
 class _JankenPageState extends State<JankenPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('じゃんけん'),
+      ),
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('👊'),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('✌️'),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('✋'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
