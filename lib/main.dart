@@ -56,6 +56,7 @@ class _JankenPageState extends State<JankenPage> {
                   onPressed: () {
                     myHand = '👊';
                     print('👊');
+                    setState(() {});
                   },
                   child: Text('👊'),
                 ),
@@ -63,6 +64,7 @@ class _JankenPageState extends State<JankenPage> {
                   onPressed: () {
                     myHand = '✌️';
                     print('✌️');
+                    setState(() {});
                   },
                   child: Text('✌️'),
                 ),
@@ -70,6 +72,7 @@ class _JankenPageState extends State<JankenPage> {
                   onPressed: () {
                     myHand = '✋';
                     print('✋');
+                    setState(() {});
                   },
                   child: Text('✋'),
                 ),
