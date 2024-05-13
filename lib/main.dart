@@ -43,11 +43,15 @@ class _JankenPageState extends State<JankenPage> {
   }
 
   void generateComputerHand() {
-    print(Random().nextInt(3)); //0, 1, 2の数値がランダムに生成される処理
+    final randomNumber = Random().nextInt(3); //0, 1, 2の数値がランダムに生成される処理
+
+    //rondomNumberToHand関数の引数にRandom関数で0~2のランダムな値を代入する
+    computerHand = randomNumberToHand(randomNumber);
   }
 
 //ランダムな整数をじゃんけんの絵文字に変換する為の関数
   String randomNumberToHand(int randomNumber) {
+    //switch文で引数に渡された値に応じた処理を実行させる
     switch (randomNumber) {
       case 0:
         return '👊';
@@ -70,6 +74,13 @@ class _JankenPageState extends State<JankenPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              computerHand,
+              style: TextStyle(
+                fontSize: 32,
+              ),
+            ),
+            SizedBox(height: 48),
             Text(
               myHand,
               style: TextStyle(
