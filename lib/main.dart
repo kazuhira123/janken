@@ -34,6 +34,8 @@ class _JankenPageState extends State<JankenPage> {
 
   String computerHand = '👊';
 
+  String jankenResult = '引き分け';
+
 //帰り値の型 関数名 (引数の型 引数名) {関数の処理}のルールで記述する
   void selectHand(String selectedHand) {
     myHand = selectedHand;
@@ -74,6 +76,15 @@ class _JankenPageState extends State<JankenPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              jankenResult,
+              style: TextStyle(
+                fontSize: 32,
+              ),
+            ),
+            SizedBox(
+              height: 48,
+            ),
             Text(
               computerHand,
               style: TextStyle(
