@@ -41,6 +41,7 @@ class _JankenPageState extends State<JankenPage> {
     myHand = selectedHand;
     print(myHand);
     generateComputerHand();
+    judge();
     setState(() {});
   }
 
@@ -63,6 +64,20 @@ class _JankenPageState extends State<JankenPage> {
         return '✋';
       default:
         return '';
+    }
+  }
+
+  void judge() {
+    if (myHand == computerHand) {
+      jankenResult = '引き分け';
+    } else if (myHand == '👊' && computerHand == '✌️') {
+      jankenResult = '勝ち！';
+    } else if (myHand == '✌️' && computerHand == '✋') {
+      jankenResult = '勝ち！';
+    } else if (myHand == '✋' && computerHand == '👊') {
+      jankenResult = '勝ち！';
+    } else {
+      jankenResult = '負け・・・';
     }
   }
 
