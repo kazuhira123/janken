@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -36,12 +37,19 @@ class _JankenPageState extends State<JankenPage> {
 
   String jankenResult = '引き分け';
 
+  int matchCount = 0;
+  int winNumber = 0;
+  int loseNumber = 0;
+
 //帰り値の型 関数名 (引数の型 引数名) {関数の処理}のルールで記述する
   void selectHand(String selectedHand) {
     myHand = selectedHand;
     print(myHand);
     generateComputerHand();
     judge();
+    matchCount += 1;
+    print(matchCount);
+    matchCountFunction();
     setState(() {});
   }
 
@@ -67,17 +75,33 @@ class _JankenPageState extends State<JankenPage> {
     }
   }
 
+  void matchCountFunction() {
+    if (matchCount == 5) {
+      jankenResult = winNumber.toString() + '勝' + loseNumber.toString() + '敗';
+      matchCount = 0;
+      winNumber = 0;
+      loseNumber = 0;
+    } else if (matchCount > 5) {
+      matchCount = 0;
+      jankenResult = 'カウントリセット！';
+    }
+  }
+
   void judge() {
     if (myHand == computerHand) {
       jankenResult = '引き分け';
     } else if (myHand == '👊' && computerHand == '✌️') {
       jankenResult = '勝ち！';
+      winNumber += 1;
     } else if (myHand == '✌️' && computerHand == '✋') {
       jankenResult = '勝ち！';
+      winNumber += 1;
     } else if (myHand == '✋' && computerHand == '👊') {
       jankenResult = '勝ち！';
+      winNumber += 1;
     } else {
       jankenResult = '負け・・・';
+      loseNumber += 1;
     }
   }
 
